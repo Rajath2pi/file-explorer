@@ -1,6 +1,8 @@
-interface Tree{
-    id: any;
-    name: String;
-    type: String;
-    children: any[];
+interface Tree {
+    id: string;
+    name: string;
+    type: 'file' | 'folder';
+    children: Tree[];
 }
+
+export type { Tree };

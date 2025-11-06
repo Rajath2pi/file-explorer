@@ -29,7 +29,8 @@ export default function Home() {
                 <li>Click the arrow (<ChevronRight className="inline w-3 h-3 text-gray-600 transform rotate-90" />) to expand/collapse folders.</li>
                 <li>Use <span className="font-mono bg-gray-100 p-0.5 rounded text-green-700">+F</span> to add a new **Folder**.</li>
                 <li>Use <span className="font-mono bg-gray-100 p-0.5 rounded text-indigo-700">+A</span> to add a new **File**.</li>
-                <li>Press `Enter` or click `Add` after typing the new name.</li>
+                <li>Use <span className="font-mono bg-gray-100 p-0.5 rounded text-green-700">+D</span> to Delete a **Folder**.</li>
+                <li>Press `Enter` after typing the new name.</li>
               </ul>
             </div>
           </div>

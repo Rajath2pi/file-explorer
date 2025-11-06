@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 import FileTree from "./FileTree";
+import { Tree } from "../model/Tree";
 
 
-const initialExplorerData = {
+const initialExplorerData: Tree = {
     id: 'root',
     name: 'My-Project-File',
     type: 'folder',
@@ -61,7 +62,7 @@ export default function MainComponent() {
         return tree; // Return the original node if no changes were made
     };
 
-    const deleteNode = (tree: Tree, nodeIdToDelete: Tree): any => {
+    const deleteNode = (tree: Tree, nodeIdToDelete: string): any => {
         if (tree.children) {
             let updatedChildren = [];
             let wasModified = false;

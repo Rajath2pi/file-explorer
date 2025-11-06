@@ -17,14 +17,18 @@ const FileIcon = ({ className = 'w-5 h-5' }) => (
 
 
 export default function FileTree({ explorer, handleInsertNode, onDelete }: any) {
-   const [expanded, setExpanded] = useState(true);
+  const [expanded, setExpanded] = useState(false); // Start collapsed by default
   const [showInput, setShowInput] = useState(false);
   const [isFolder, setIsFolder] = useState(false);
   const [itemName, setItemName] = useState('');
 
   // Handle addition of new item
   const onAdd = (e: any) => {
-    if (e.key === 'Enter' || e.type === 'click') {
+    console.log(e.key, e.type, "========>")
+    // Handle both keyboard and click events
+    const isEnterKey = e.key === 'Enter';
+    const isClickEvent = e.type === 'click';
+    if (isEnterKey || isClickEvent) {
       if (itemName.trim()) {
         handleInsertNode(explorer.id, itemName.trim(), isFolder);
         setShowInput(false);
@@ -75,14 +79,25 @@ export default function FileTree({ explorer, handleInsertNode, onDelete }: any) 
         className="flex items-center space-x-2 py-1 px-2 cursor-pointer bg-gray-100 hover:bg-gray-200 rounded-md transition-colors"
       >
         <div
-          onClick={() => setExpanded(!expanded)}
+          onClick={(e) => {
+            e.stopPropagation();
+            setExpanded(!expanded);
+          }}
           className="p-0.5 rounded-full hover:bg-gray-300"
         >
           <ChevronRight className={`text-gray-600 transform transition-transform ${expanded ? 'rotate-90' : 'rotate-0'}`} />
         </div>
 
         <FolderIcon className="w-5 h-5 text-yellow-500" />
-        <span className="font-medium text-gray-800" onClick={() => setExpanded(!expanded)}>{explorer.name}</span>
+        <span 
+          className="font-medium text-gray-800 flex-grow" 
+          onClick={(e) => {
+            e.stopPropagation();
+            setExpanded(!expanded);
+          }}
+        >
+          {explorer.name}
+        </span>
 
         {/* Action Buttons */}
         <div className="flex space-x-1 ml-auto">
@@ -131,7 +146,9 @@ export default function FileTree({ explorer, handleInsertNode, onDelete }: any) 
               placeholder={`Enter ${isFolder ? 'folder' : 'file'} name...`}
             />
             <button
-              onClick={onAdd}
+              type="button"
+              onMouseDown={(e) => e.preventDefault()}
+              onClick={(e) => onAdd(e)}
               className="p-1 text-xs bg-gray-500 text-white rounded-md hover:bg-gray-600 transition-colors"
             >
               Add
