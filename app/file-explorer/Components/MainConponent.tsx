@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import FileTree from "./FileTree";
-import { Tree } from "../model/Tree";
+import { Tree } from "../../model/Tree";
 
 
 const initialExplorerData: Tree = {
