@@ -16,7 +16,19 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <script src="https://cdn.tailwindcss.com"></script>
-        {children}
+        <header className="w-full bg-blue-600 p-5 flex space-between gap-10">
+          <label className="text-white text-2xl">Web Essentials</label>
+        </header>
+        <main className="">
+          <div className="min-h-screen bg-gray-50 p-4 md:p-8 font-['Inter'] flex justify-center bg-gray-800 font-sans">
+            <style>{`
+              .shadow-lg-custom {
+                  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+              }
+            `}</style>
+            {children}
+          </div>
+        </main>
       </body>
     </html>
   );

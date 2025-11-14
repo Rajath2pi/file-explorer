@@ -48,7 +48,6 @@ export default function Pagination(){
             <div className="w-full max-w-4xl bg-white shadow-2xl rounded-xl p-6 md:p-10 ring-4 ring-indigo-50">
                 <h1 className="text-3xl font-extrabold text-indigo-800 mb-2">React Pagination Challenge</h1>
                 <p className="text-gray-500 mb-6">Built using functional components and hooks for efficient rendering.</p>
-
                 {/* Current Page / Item Info */}
                 <div id="info" className="text-center text-sm font-semibold text-gray-600 mb-4 p-2 bg-indigo-50 rounded-md">
                     {getPageInfo()}
